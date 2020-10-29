@@ -24,6 +24,7 @@ class Form extends Component{
             indcrop:{},
             error: "",
             open: false,
+            answer:""
         };
     }
     
@@ -67,7 +68,19 @@ class Form extends Component{
         cropweight[5][22]=vals.misc;
         var ans=simplex(cropweight);
         console.log(ans);
+        this.setState({answer:ans});
     };
+    // answertab=()=>(
+    //     <div>
+    //         {this.state.answer === null ? "" : this.state.answer.map((v,index) =>
+    //         <div>
+    //             <h4>{index}</h4>
+    //         </div>
+    //         )}
+    //     </div>
+    // );
+    
+    
     
     mainform = (area, invest) => (
         <div className="card">
@@ -308,7 +321,7 @@ class Form extends Component{
     );
 
     render() {
-        const { area, invest, error} = this.state;
+        const { area, invest, error,answer} = this.state;
         return (
             <div className="container p-5">
                 
@@ -321,6 +334,19 @@ class Form extends Component{
                 </div>
 
                 {this.mainform(area, invest)}
+                <div
+                    className="alert alert-primary"
+                    style={{ display: answer ? "" : "none" }}
+                >
+                    <h4>Total Price: {this.state.answer[0]}</h4>
+                    <h4>Amount for Seeds: {this.state.answer[1]}</h4>
+                    <h4>Total labour: {this.state.answer[2]}</h4>
+                    <h4>Total machinary: {this.state.answer[3]}</h4>
+                    <h4>Total manure: {this.state.answer[4]}</h4>
+                    <h4>Total Miscellaneous items:{this.state.answer[5]}</h4>
+                    
+                    
+                </div>
             </div>
         );
     }
