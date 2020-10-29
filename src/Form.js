@@ -1,13 +1,20 @@
 import React, {Component} from 'react';
 import Select from 'react-select';
-import {groupedOptions} from './crops.js';
-import "./_custom-variables.scss"
+import {groupedOptions,cropweight} from './crops.js';
+import "./_custom-variables.scss";
+import {simplex} from "./simplex";
 class Form extends Component{
     constructor(){
         super();
         this.state = {
             area: "",
-            invest:"",
+            invest:{
+                seeds:"",
+                manure:"",
+                labour:"",
+                mach:"",
+                misc:""
+            },
             watersupply: "",
             fertilizers: "",
             pests:"",
@@ -19,6 +26,14 @@ class Form extends Component{
             open: false,
         };
     }
+    
+    handleinvest = (b) => event => {
+        var newState=this.state;
+        this.setState({ error: "" });
+        console.log(event);
+        newState.invest[b]=event.target.value;
+        this.setState(newState);
+    };
     
     handleChange = name => event => {
         this.setState({ error: "" });
@@ -32,6 +47,7 @@ class Form extends Component{
     
     handlecrops=(name, value)=>event=>{
         var newState=this.state;
+        this.setState({ error: "" });
         if(!newState.indcrop[value]){
             newState.indcrop[value]={"yield":"0","place":"","price":"0"};
         }
@@ -41,15 +57,16 @@ class Form extends Component{
     }
     
     clickSubmit = event => {
-        event.preventDefault();
-        const { area, email, password } = this.state;
-        const user = {
-            area,
-            email,
-            password
-        };
-        // console.log(user);
-        
+        var vals=this.state.invest;
+        console.log(cropweight);
+        cropweight[0][22]=this.state.area;
+        cropweight[1][22]=vals.seeds;
+        cropweight[2][22]=vals.labour;
+        cropweight[3][22]=vals.mach;
+        cropweight[4][22]=vals.manure;
+        cropweight[5][22]=vals.misc;
+        var ans=simplex(cropweight);
+        console.log(ans);
     };
     
     mainform = (area, invest) => (
@@ -58,14 +75,14 @@ class Form extends Component{
         <form className="text-left border border-light p-5">
             <div className="md-form row p-3">
                 <div className="col-5">
-                    <label for="areatext">What is the total cultivable area?</label>
+                    <label htmlFor="areatext">What is the total cultivable area?</label>
                 </div>
                 <div className="col-3">
                     <input
                         onChange={this.handleChange("area")}
                         type="number"
                         id="areatext"
-                        class="form-control"
+                        className="form-control"
                         value={area}
                     />
                 </div>
@@ -78,7 +95,7 @@ class Form extends Component{
                 <div className="col-3 row">
                     <div className="custom-control custom-radio custom-control-inline ml-3 col">
                         <input type="radio" id="Yes" className="custom-control-input" name="water-supply" value="Yes" onChange={this.handleChange("watersupply")}/>
-                        <label for="Yes" className="custom-control-label pl-2">Yes</label>
+                        <label htmlFor="Yes" className="custom-control-label pl-2">Yes</label>
                     </div>
                     <div className="custom-control custom-radio custom-control-inline ml-3 col">
                         <input type="radio" id="No" className="custom-control-input" name="water-supply" value="No" onChange={this.handleChange("watersupply")}/>
@@ -135,20 +152,67 @@ class Form extends Component{
                 </div>
             </div>
             
+            
             <div className="md-form row p-3">
                 <div className="col-5">
-                    <label className="text-muted">How much money can you invest this season?</label>
+                    <label className="text-muted">How much money can you invest on seeds?</label>
                 </div>
                 <div className="col-3">
                     <input
-                        onChange={this.handleChange("invest")}
+                        onChange={this.handleinvest("seeds")}
                         type="number"
                         className="form-control"
-                        value={invest}
                     />
                 </div>
             </div>
-            
+            <div className="md-form row p-3">
+                <div className="col-5">
+                    <label className="text-muted">How much money can you invest on labour?</label>
+                </div>
+                <div className="col-3">
+                    <input
+                        onChange={this.handleinvest("labour")}
+                        type="number"
+                        className="form-control"
+                    />
+                </div>
+            </div>
+            <div className="md-form row p-3">
+                <div className="col-5">
+                    <label className="text-muted">How much money can you invest on machinary?</label>
+                </div>
+                <div className="col-3">
+                    <input
+                        onChange={this.handleinvest("mach")}
+                        type="number"
+                        className="form-control"
+                    />
+                </div>
+            </div>
+            <div className="md-form row p-3">
+                <div className="col-5">
+                    <label className="text-muted">How much money can you invest on manure?</label>
+                </div>
+                <div className="col-3">
+                    <input
+                        onChange={this.handleinvest("manure")}
+                        type="number"
+                        className="form-control"
+                    />
+                </div>
+            </div>
+            <div className="md-form row p-3">
+                <div className="col-5">
+                    <label className="text-muted">How much money can you invest on miscellaneous costs?</label>
+                </div>
+                <div className="col-3">
+                    <input
+                        onChange={this.handleinvest("misc")}
+                        type="number"
+                        className="form-control"
+                    />
+                </div>
+            </div>
             <div className="md-form p-3 row">
                 <div className="col-5">
                     <label className="text-muted pr-5">Do you have a soil card?</label>
@@ -231,7 +295,8 @@ class Form extends Component{
                 )
             }
             </div>
-            <div className="text-center">
+        </form>
+        <div className="text-center">
                 <button
                     onClick={this.clickSubmit}
                     className="btn btn-raised btn-success"
@@ -239,7 +304,6 @@ class Form extends Component{
                     Submit
                 </button>
             </div>
-        </form>
         </div>
     );
 
