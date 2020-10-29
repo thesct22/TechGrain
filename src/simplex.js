@@ -1,6 +1,6 @@
 
 export function simplex(M){
-    var i,j,k,pivot_column,pivot_row,temp;
+    var i,j,k,pivot_column,pivot_row,temp,pos;
     var m= 6;
     var n= 15;
     k = 0;
@@ -54,7 +54,26 @@ export function simplex(M){
     while(k < n);
     var retarry=[];
     retarry.push(M[m][m+n+1]);
-    for(i = 0; i < m; i++)
-        retarry.push(M[i][m + n + 1]);
+    for(i = 0; i < n; i++)
+    {
+      	count = 0;
+      	flag = 0;
+      	for(j = 0; j <= m; j++)
+      	{
+      		if(M[j][i] == 1)
+      		{
+      			count += 1;
+      			pos = j;
+      		}
+      		else if(M[j][i] != 0)
+      		{
+      			flag = 1;
+      			//console.log(M[j][i]);
+      			break;
+      		}
+      	}
+      	if(count == 1 && flag == 0)
+            retarry.push(M[pos][m + n + 1]);//x[i]
+   	}
     return(retarry);
 }
