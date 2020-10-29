@@ -1,29 +1,31 @@
 export const Rabioptions=[
-    { value: 'wheat', label: 'Wheat'},
-    { value: 'barley', label: 'Barley'},
-    { value: 'peas', label: 'Peas'},
-    { value: 'gram', label: 'Gram'}
+    { value: 'wheat', label: 'Wheat', telugu:"గోధుమ"},
+    { value: 'barley', label: 'Barley', telugu:"బార్లీ"},
+    { value: 'peas', label: 'Peas', telugu:"బటానీలు"},
+    { value: 'gram', label: 'Gram', telugu:""}
 ];
 export const Kharifoptions=[
-    { value: 'rice', label: 'Rice'},
-    { value: 'maize', label: 'Maize'},
-    { value: 'jowar', label: 'Jowar'},
-    { value: 'bajra', label: 'Bajra'},
-    { value: 'tur', label: 'Tur'},
-    { value: 'moong', label: 'Moong'},
-    { value: 'urad', label: 'Urad'},
-    { value: 'cotton', label: 'Cotton'},
-    { value: 'jute', label: 'Jute'},
-    { value: 'groundnut', label: 'Groundnut'},
-    { value: 'soybean', label: 'Soybean'}
+    { value: 'rice', label: 'Rice', telugu:""},
+    { value: 'maize', label: 'Maize', telugu:""},
+    { value: 'jowar', label: 'Jowar', telugu:""},
+    { value: 'bajra', label: 'Bajra', telugu:""},
+    { value: 'tur', label: 'Tur', telugu:""},
+    { value: 'moong', label: 'Moong', telugu:""},
+    { value: 'urad', label: 'Urad', telugu:""},
+    { value: 'cotton', label: 'Cotton', telugu:""},
+    { value: 'jute', label: 'Jute', telugu:""},
+    { value: 'groundnut', label: 'Groundnut', telugu:""},
+    { value: 'soybean', label: 'Soybean', telugu:""}
 ];
 export const groupedOptions = [
     {
       label: 'Kharif Crops',
+      telugu:"",
       options: Kharifoptions,
     },
     {
       label: 'Rabi Crops',
+      telugu:"",
       options: Rabioptions,
     },
   ];

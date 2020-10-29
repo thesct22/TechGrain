@@ -70,25 +70,21 @@ class Form extends Component{
         console.log(ans);
         this.setState({answer:ans});
     };
-    // answertab=()=>(
-    //     <div>
-    //         {this.state.answer === null ? "" : this.state.answer.map((v,index) =>
-    //         <div>
-    //             <h4>{index}</h4>
-    //         </div>
-    //         )}
-    //     </div>
-    // );
-    
     
     
     mainform = (area, invest) => (
         <div className="card">
         <h2 className="mt-5 ml-5 purple-text">Crop Details</h2>
         <form className="text-left border border-light p-5">
-            <div className="md-form row p-3">
-                <div className="col-5">
-                    <label htmlFor="areatext">What is the total cultivable area?</label>
+            <div className="md-form row">
+                <div className="col-7">
+                <div className="col">
+                    <label>The total cultivable area in acres:</label>
+                </div>
+                <br/>
+                <div className="col">
+                    <label>ఎకరాలలో మొత్తం సాగు విస్తీర్ణం</label>
+                </div>
                 </div>
                 <div className="col-3">
                     <input
@@ -102,8 +98,14 @@ class Form extends Component{
             </div>
             
             <div className="md-form row p-3">
-                <div className="col-5">
-                    <label className="text-muted pr-5">Do you have a continuous supply of water for irrigation?:</label>
+                <div className="col-7">
+                    <div className="col">
+                        <label>Do you have a adequate supply of water for irrigation?:</label>
+                    </div>
+                    <br/>
+                    <div className="col">
+                        <label>నీటిపారుదల కోసం మీకు తగినంత నీటి సరఫరా ఉందా?</label>
+                    </div>
                 </div>
                 <div className="col-3 row">
                     <div className="custom-control custom-radio custom-control-inline ml-3 col">
@@ -118,24 +120,36 @@ class Form extends Component{
             </div>
             
             <div className="md-form row p-3">
-                <div className="col-5">
-                    <label className="text-muted pr-5">What kind of fertilizers do you use?</label>
+                <div className="col-7">
+                    <div className="col">
+                        <label>What kind of fertilizers do you use?</label>
+                    </div>
+                    <br/>
+                    <div className="col">
+                        <label>మీరు ఎలాంటి ఎరువులు ఉపయోగిస్తున్నారు?</label>
+                    </div>
                 </div>
                 <div className="col-3 row">
                     <div className="custom-control custom-radio custom-control-inline ml-3 col">
                         <input type="radio" id="Organic" className="custom-control-input" name="fertilizers" value="Organic" onChange={this.handleChange("fertilizers")}/>
-                        <label htmlFor="Organic" className="custom-control-label pl-2">Organic</label>
+                        <label htmlFor="Organic" className="custom-control-label pl-2">Organic సేంద్రీయ</label>
                     </div>
                     <div className="custom-control custom-radio custom-control-inline ml-3 col">
                         <input type="radio" id="Inorganic" className="custom-control-input" name="fertilizers" value="Inorganic" onChange={this.handleChange("fertilizers")}/>
-                        <label htmlFor="Inorganic"className="custom-control-label pl-2">Inorganic</label>
+                        <label htmlFor="Inorganic"className="custom-control-label pl-2">Inorganic అకర్బన</label>
                     </div>
                 </div>
             </div>
             
             <div className="md-form row p-3">
-                <div className="col-5">
-                    <label className="text-muted pr-5">Did you face pest problems in the past?</label>
+                <div className="col-7">
+                    <div className="col">
+                        <label>Did you face pest problems in the past?</label>
+                    </div>
+                    <br/>
+                    <div className="col">
+                        <label>మీరు గతంలో తెగులు సమస్యలను ఎదుర్కొన్నారా?</label>
+                    </div>
                 </div>
                 <div className="col-3 row">
                     <div className="custom-control custom-radio custom-control-inline ml-3 col">
@@ -150,8 +164,14 @@ class Form extends Component{
             </div>
             
             <div className="md-form row p-3">
-                <div className="col-5">
-                    <label className="text-muted pr-5">Did you face shortage of labour?</label>
+                <div className="col-7">
+                    <div className="col">
+                        <label>Did you face shortage of labour?</label>
+                    </div>
+                    <br/>
+                    <div className="col">
+                        <label>మీరు శ్రమ కొరతను ఎదుర్కొన్నారా?</label>
+                    </div>
                 </div>
                 <div className="col-3 row">
                     <div className="custom-control custom-radio custom-control-inline ml-3 col">
@@ -167,8 +187,14 @@ class Form extends Component{
             
             
             <div className="md-form row p-3">
-                <div className="col-5">
-                    <label className="text-muted">How much money can you invest on seeds?</label>
+                <div className="col-7">
+                    <div className="col">
+                        <label>How much money can you invest on seeds?</label>
+                    </div>
+                    <br/>
+                    <div className="col">
+                        <label>మీరు విత్తనాలపై ఎంత డబ్బు పెట్టుబడి పెట్టవచ్చు?</label>
+                    </div>
                 </div>
                 <div className="col-3">
                     <input
@@ -179,8 +205,14 @@ class Form extends Component{
                 </div>
             </div>
             <div className="md-form row p-3">
-                <div className="col-5">
-                    <label className="text-muted">How much money can you invest on labour?</label>
+                <div className="col-7">
+                    <div className="col">
+                        <label>How much money can you invest on labour?</label>
+                    </div>
+                    <br/>
+                    <div className="col">
+                        <label>మీరు కార్మికుల కోసం ఎంత డబ్బు పెట్టుబడి పెట్టవచ్చు?</label>
+                    </div>
                 </div>
                 <div className="col-3">
                     <input
@@ -191,8 +223,14 @@ class Form extends Component{
                 </div>
             </div>
             <div className="md-form row p-3">
-                <div className="col-5">
-                    <label className="text-muted">How much money can you invest on machinary?</label>
+                <div className="col-7">
+                    <div className="col">
+                        <label>How much money can you invest on machinery?</label>
+                    </div>
+                    <br/>
+                    <div className="col">
+                        <label>యంత్రాల కోసం మీరు ఎంత డబ్బు పెట్టుబడి పెట్టవచ్చు?</label>
+                    </div>
                 </div>
                 <div className="col-3">
                     <input
@@ -203,8 +241,14 @@ class Form extends Component{
                 </div>
             </div>
             <div className="md-form row p-3">
-                <div className="col-5">
-                    <label className="text-muted">How much money can you invest on manure?</label>
+                <div className="col-7">
+                    <div className="col">
+                        <label>How much money can you invest on fertilizers?</label>
+                    </div>
+                    <br/>
+                    <div className="col">
+                        <label>ఎరువుల కోసం మీరు ఎంత డబ్బు పెట్టుబడి పెట్టవచ్చు?</label>
+                    </div>
                 </div>
                 <div className="col-3">
                     <input
@@ -215,8 +259,14 @@ class Form extends Component{
                 </div>
             </div>
             <div className="md-form row p-3">
-                <div className="col-5">
-                    <label className="text-muted">How much money can you invest on miscellaneous costs?</label>
+                <div className="col-7">
+                    <div className="col">
+                        <label>How much money can you invest on miscellaneous costs?</label>
+                    </div>
+                    <br/>
+                    <div className="col">
+                        <label>ఇతర ఖర్చులపై మీరు ఎంత డబ్బు పెట్టుబడి పెట్టవచ్చు?</label>
+                    </div>
                 </div>
                 <div className="col-3">
                     <input
@@ -227,8 +277,14 @@ class Form extends Component{
                 </div>
             </div>
             <div className="md-form p-3 row">
-                <div className="col-5">
-                    <label className="text-muted pr-5">Do you have a soil card?</label>
+                <div className="col-7">
+                    <div className="col">
+                        <label>Do you have a Soil Health Card?</label>
+                    </div>
+                    <br/>
+                    <div className="col">
+                        <label>మీకు భూ ఆరోగ్య పత్రము ఉందా?</label>
+                    </div>
                 </div>
                 <div className="col-3 row">
                     <div className="custom-control custom-radio custom-control-inline ml-3 col">
@@ -245,6 +301,8 @@ class Form extends Component{
             
             <div className="form-group p-3">
                 <label className="text-muted">What crops have you grown in the past?</label>
+                <br/>
+                <label className="text-muted">మీరు గతంలో ఏ పంటలు పండించారు?</label>
                 <Select
                     isMulti
                     name="crops"
@@ -264,7 +322,7 @@ class Form extends Component{
                         <h4 className="mt-5 mb-5 green-text">{v.label}</h4>
                         
                         <div className="md-form p-3 row">
-                            <div className="col-5">
+                            <div className="col-7">
                                 <label className="text-muted">What is the approximate yield for {v.label}?</label>
                             </div>
                             <div className="col-3">
@@ -278,7 +336,7 @@ class Form extends Component{
                         </div>
                         
                         <div className="md-form p-3 row">
-                            <div className="col-5">
+                            <div className="col-7">
                                 <label className="text-muted">Where have you sold {v.label}?</label>
                             </div>
                             <div className="col-3">
@@ -292,7 +350,7 @@ class Form extends Component{
                         </div>
                         
                         <div className="md-form p-3 row">
-                            <div className="col-5">
+                            <div className="col-7">
                                 <label className="text-muted">At what price?</label>
                             </div>
                             <div className="col-3">
@@ -338,12 +396,12 @@ class Form extends Component{
                     className="alert alert-primary"
                     style={{ display: answer ? "" : "none" }}
                 >
-                    <h4>Total Price: {this.state.answer[0]}</h4>
-                    <h4>Amount for Seeds: {this.state.answer[1]}</h4>
-                    <h4>Total labour: {this.state.answer[2]}</h4>
-                    <h4>Total machinary: {this.state.answer[3]}</h4>
-                    <h4>Total manure: {this.state.answer[4]}</h4>
-                    <h4>Total Miscellaneous items:{this.state.answer[5]}</h4>
+                    <h4>Area of Crop 1: {this.state.answer[1]}</h4>
+                    <h4>Area of Crop 2: {this.state.answer[2]}</h4>
+                    <h4>Area of Crop 3: {this.state.answer[3]}</h4>
+                    <h4>Area of Crop 4: {this.state.answer[4]}</h4>
+                    <h4>Area of Crop 5: {this.state.answer[5]}</h4>
+                    <h4>Area of Crop 6: {this.state.answer[6]}</h4>
                     
                     
                 </div>
