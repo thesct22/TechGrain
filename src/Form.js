@@ -23,7 +23,6 @@ class Form extends Component{
             cropselect:[],
             indcrop:{},
             error: "",
-            open: false,
             answer:""
         };
     }
@@ -58,18 +57,49 @@ class Form extends Component{
     }
     
     clickSubmit = event => {
+        event.preventDefault();
+        console.log("h0");
         var vals=this.state.invest;
+        var cw=cropweight;
+        console.log(cw);
+        console.log("h1");
         console.log(cropweight);
-        cropweight[0][22]=this.state.area;
-        cropweight[1][22]=vals.seeds;
-        cropweight[2][22]=vals.labour;
-        cropweight[3][22]=vals.mach;
-        cropweight[4][22]=vals.manure;
-        cropweight[5][22]=vals.misc;
-        var ans=simplex(cropweight);
+        cw[0][22]=this.state.area;
+        cw[1][22]=vals.seeds;
+        cw[2][22]=vals.labour;
+        cw[3][22]=vals.mach;
+        cw[4][22]=vals.manure;
+        cw[5][22]=vals.misc;
+        console.log("h2");
+        console.log(cw);
+        var ans=simplex(cw);
+        console.log(cw);
         console.log(ans);
+        console.log("h3");
         this.setState({answer:ans});
+        
     };
+    clickreset=event=>{
+        this.setState({
+            area: "",
+            invest:{
+                seeds:"",
+                manure:"",
+                labour:"",
+                mach:"",
+                misc:""
+            },
+            watersupply: "",
+            fertilizers: "",
+            pests:"",
+            labour:"",
+            card:"",
+            cropselect:[],
+            indcrop:{},
+            error: "",
+            answer:""
+        });
+    }
     
     
     mainform = (area, invest) => (
@@ -374,7 +404,13 @@ class Form extends Component{
                 >
                     Submit
                 </button>
-            </div>
+                <button
+                    onClick={this.clickreset}
+                    className="btn btn-raised btn-danger"
+                >
+                    Reset
+                </button>
+        </div>
         </div>
     );
 
