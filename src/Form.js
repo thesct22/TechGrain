@@ -60,7 +60,7 @@ class Form extends Component{
         event.preventDefault();
         console.log("h0");
         var vals=this.state.invest;
-        var cw=cropweight;
+        var cw = cropweight.map(x => Object.assign({}, x));
         console.log(cw);
         console.log("h1");
         console.log(cropweight);
